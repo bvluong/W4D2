@@ -19,6 +19,12 @@ COLORS = %w(brown black white orange red blue green yellow purple)
   validates :color, inclusion: { in: COLORS, message: "Not a valid color" }
   validates :sex, inclusion: { in: %w(M F I), message: "Not a valid sex" }
 
+  has_many :cat_rental_requests,
+    dependent: :destroy,
+    primary_key: :id,
+    foreign_key:  :cat_id,
+    class_name: 'CatRentalRequest'
+
 
   def age
     Time.now.year - birth_date.year
