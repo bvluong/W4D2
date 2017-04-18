@@ -1,0 +1,22 @@
+<h1> Rent a new cat! </h1>
+
+<form  action= "<%=cat_rental_requests_url%>" method="post">
+
+  <label for="cat_id">Cat ID</label>
+  <input type="text" name="cat_rental_request[cat_id]" value>
+
+  <br></br>
+
+  <label for="start_date">Start Date</label>
+  <input type="date" name="cat_rental_request[start_date]" value>
+
+  <br> </br>
+
+  <label for="end_date">End Date</label>
+  <input type="date" name="cat_rental_request[end_date]" value>
+
+  <br> </br>
+
+  <input type="submit" value="Submit your request!">
+
+</form>
