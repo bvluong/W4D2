@@ -23,4 +23,9 @@ COLORS = %w(brown black white orange red blue green yellow purple)
   def age
     Time.now.year - birth_date.year
   end
+
+  def self.colors
+    COLORS
+  end
+
 end

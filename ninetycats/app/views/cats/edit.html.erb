@@ -1,0 +1,45 @@
+<h1> Update <%= @cat.name %> </h1>
+<h4> Enter in the new information</h4>
+
+<%= render "form", action: :edit, method: :PATCH, cat: @cat %>
+<!--
+<form  action= "<%=cat_url(@cat)%>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="name">Name</label>
+  <input type="text" name="cat[name]" value= "<%= @cat.name %>">
+
+  <br></br>
+
+  <label for="birth_date">Birth Date</label>
+  <input type="date" name="cat[birth_date]" value = "<%= @cat.birth_date %>">
+
+  <br> </br>
+
+  <label for="color">Color</label>
+  <select name="cat[color]">
+    <option value="" disabled>Please select color</option>
+    <% @COLORS.each do |color| %>
+      <option value= "<%=color%>" "<% @cat.color == color ? 'selected' : "" %>" ><%= color %></option>
+    <% end %>
+  </select>
+
+  <br> </br>
+
+  <label for="cat_sex_male">Male</label>
+  <input type="radio" name="cat[sex]" value="M" checked = "<% @cat.sex == 'M' ? 'checked' : "" %>">
+  <label for="cat_sex_female">Female</label>
+  <input type="radio" name="cat[sex]" value="F" checked = "<% @cat.sex == 'F' ? 'checked' : "" %>">
+  <label for="cat_sex_intersex">Intersex</label>
+  <input type="radio" name="cat[sex]" value="I" checked = "<% @cat.sex == 'I' ? 'checked' : "" %>">
+
+  <br> </br>
+
+  <label for="description">Description</label>
+  <textarea name="cat[description]" rows="8" cols="80"> <%= @cat.description %> </textarea>
+
+  <br> </br>
+
+  <input type="submit" value="Submit your cat!">
+
+</form> -->

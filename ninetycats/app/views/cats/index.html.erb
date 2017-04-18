@@ -3,3 +3,7 @@
 <% @cats.each do |cat| %>
   <%= render 'all_cats', cat: cat %>
 <% end %>
+
+<br></br>
+
+<%= link_to "Add a cat", new_cat_url %>
