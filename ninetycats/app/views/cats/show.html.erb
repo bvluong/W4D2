@@ -1,0 +1,30 @@
+<h1><%=@cat.name%></h1>
+
+<p>Get to know <%=@cat.name%></p>
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td>Age (yrs):</td>
+      <td> <%= @cat.age%> </td>
+    </tr>
+    <% @cat.attributes.each do |k, v| %>
+    <% next if %w(id created_at updated_at).include?(k) %>
+    <tr>
+      <td><%= k %>:</td>
+      <td><%= v %></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<br>
+<%= link_to "Main page", cats_url %>
