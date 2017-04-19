@@ -3,7 +3,12 @@
 <form  action= "<%=cat_rental_requests_url%>" method="post">
 
   <label for="cat_id">Cat ID</label>
-  <input type="text" name="cat_rental_request[cat_id]" value>
+  <select name="cat_rental_request[cat_id]">
+    <option value="" disabled selected>Please select cat id</option>
+    <% @cats.each do |cat| %>
+      <option value= "<%=cat.id%>" ><%= cat.id %></option>
+    <% end %>
+  </select>
 
   <br></br>
 

@@ -26,21 +26,33 @@
 
 </table>
 
-<p>Rental Requests</p>
+<%= link_to "Edit this cat", edit_cat_url %>
+
+
+<h2>Rental Requests</h2>
 <table>
   <thead>
     <tr>
       <th>Start Date</th>
       <th>End Date</th>
+      <th>Status</th>
+      <th>Approve</th>
+      <th>Deny</th>
     </tr>
   </thead>
 
   <tbody>
 
-    <% @cat.cat_rental_requests.each do |rental| %>
+    <% @cat_rentals.each do |rental| %>
+      <% next if rental.status == "DENIED" %>
       <tr>
         <td><%= rental.start_date %></td>
         <td><%= rental.end_date %></td>
+        <td> <%= rental.status %> </td>
+      <% if rental.status == "PENDING" %>
+        <td> <%= button_to 'APPROVE', cat_rental_request_approve_url(rental.cat_id)  %> </td>
+        <td> <%= button_to 'DENY', cat_rental_request_deny_url(rental.cat_id)  %> </td>
+        <%end%>
       </tr>
 
       <% end %>
@@ -48,7 +60,8 @@
 
 </table>
 
-<br>
-<%= link_to "Edit this cat", edit_cat_url %>
+<%= link_to 'Request rental', new_cat_rental_request_url %>
+
+<br></br>
 
 <%= link_to "Main page", cats_url %>

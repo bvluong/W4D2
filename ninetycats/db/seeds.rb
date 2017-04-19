@@ -16,4 +16,6 @@ CatRentalRequest.destroy_all
 
 catrequest1 = CatRentalRequest.create(cat_id: c1.id, start_date: "2017-04-18", end_date:"2017-04-21", status: "PENDING" )
 catrequest2 = CatRentalRequest.create(cat_id: c2.id, start_date: "2017-04-15", end_date:"2017-04-18", status: "APPROVED")
-catrequest3 = CatRentalRequest.create(cat_id: c3.id , start_date: "2017-04-05", end_date:"2017-04-08", status: "APPROVED")
+catrequest3 = CatRentalRequest.create(cat_id: c3.id , start_date: "2017-04-05", end_date:"2017-04-08")
+catrequest4 = CatRentalRequest.create(cat_id: c3.id , start_date: "2017-04-06", end_date:"2017-04-08")
+catrequest5 = CatRentalRequest.create(cat_id: c3.id , start_date: "2017-04-07", end_date:"2017-04-12")

@@ -22,7 +22,22 @@ class CatRentalRequest < ApplicationRecord
     class_name: 'Cat'
 
 
-  private
+    def approve!
+      # CatRentalRequest.transaction do
+        self.status = 'APPROVED'
+        self.save!
+        overlapping_pending_requests.each do |request|
+          request.deny!
+        end
+      # end
+    end
+
+    def deny!
+      self.status = "DENIED"
+      self.save!
+    end
+
+  # private
 
   def overlapping_requests
     check_overlap = CatRentalRequest.where("start_date BETWEEN ? AND ? OR end_date BETWEEN ? AND ?", self.start_date, self.end_date , self.start_date, self.end_date)
@@ -35,7 +50,13 @@ class CatRentalRequest < ApplicationRecord
     overlapping_requests.where(status: 'APPROVED')
   end
 
+  def overlapping_pending_requests
+    overlapping_requests.where(status: 'PENDING')
+  end
+
+
   def does_not_overlap_approved_request
+    return if self.status == "DENIED"
     if overlapping_approved_requests.exists?
       errors[:overlapping] << "There is an overlapping request"
     end

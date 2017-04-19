@@ -10,6 +10,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = find_cat
+    @cat_rentals = @cat.cat_rental_requests.order(:start_date)
   end
 
   def create
